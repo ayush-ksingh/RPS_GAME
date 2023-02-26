@@ -1,7 +1,7 @@
-import random
 import logging
+import random
 
-win = lose = tie = 0.0
+win = lose = tie = 0
 
 
 def check_win(user, machine):
@@ -40,28 +40,8 @@ def check_win(user, machine):
             tie_round = True
         else:
             logging.info("Weird machine was: %s" % machine)
-    elif user == 3:
-        if machine == 4 or machine == 1:
-            win_round = True
-            tie_round = False
-        elif machine == 2 or machine == 0:
-            win_round = False
-            tie_round = False
-        elif machine == 3:
-            tie_round = True
-        else:
-            logging.info("Weird machine was: %s" % machine)
     else:
-        if machine == 2 or machine == 0:
-            win_round = True
-            tie_round = False
-        elif machine == 1 or machine == 3:
-            win_round = False
-            tie_round = False
-        elif machine == 4:
-            tie_round = True
-        else:
-            logging.info("Weird machine was: %s" % machine)
+        raise ValueError('A very specific bad thing happened.')
     if tie_round:
         check_stats(2)
         return "tied!"
